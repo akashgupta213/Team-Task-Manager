@@ -1,20 +1,5 @@
-# Dependencies
 node_modules/
-
-# Build output — generated when you run npm run build
-dist/
-
-# Environment variables
-.env
-.env.local
-
-# Vite cache
 .vite/
-
-# Logs
-*.log
-npm-debug.log*
-
-# OS files
-.DS_Store
-Thumbs.db
+    .log
+    .DS_Store
+    Thumbs.db
