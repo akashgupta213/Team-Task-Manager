@@ -1,0 +1,46 @@
+.page { animation: fadeUp 0.4s ease; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px) }
+  to   { opacity:1; transform:translateY(0) }
+}
+
+.loadingWrap { display:flex; align-items:center; justify-content:center; height:60vh; }
+
+.header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:12px; }
+.title { font-family:var(--font-display); font-size:28px; font-weight:700; margin-bottom:4px; }
+.sub { color:var(--text-secondary); font-size:15px; }
+.date { color:var(--text-muted); font-size:13px; padding-top:6px; }
+
+.statsGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:40px; }
+
+.statCard { display:flex; align-items:center; gap:16px; }
+.statIcon { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.statValue { font-family:var(--font-display); font-size:28px; font-weight:700; line-height:1; }
+.statLabel { font-size:13px; color:var(--text-secondary); margin-top:4px; }
+
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+@media(max-width:900px){ .grid2{ grid-template-columns:1fr; } }
+
+.sectionTitle { font-family:var(--font-display); font-size:18px; font-weight:600; margin-bottom:16px; }
+
+.taskList { display:flex; flex-direction:column; gap:10px; }
+.taskItem { padding:14px 16px; }
+.taskTop { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
+.taskTitle { font-size:14px; font-weight:500; }
+.taskMeta { font-size:12px; color:var(--text-muted); }
+.dueDate { color:var(--text-muted); }
+.overdue { color:var(--red); font-weight:500; }
+
+.projectList { display:flex; flex-direction:column; gap:10px; }
+.projectItem { display:flex; align-items:center; gap:14px; padding:14px 16px; }
+.projectAvatar {
+  width:40px; height:40px; border-radius:10px; flex-shrink:0;
+  background:var(--accent-soft); color:var(--accent);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-weight:700; font-size:18px;
+}
+.projectName { font-size:14px; font-weight:500; margin-bottom:2px; }
+.projectDesc { font-size:12px; color:var(--text-muted); }
+
+.empty { color:var(--text-muted); font-size:14px; padding:20px 0; }
