@@ -1,0 +1,5 @@
+[phases.build]
+cmds = ["node node_modules/vite/bin/vite.js build"]
+
+[start]
+cmd = "node node_modules/serve/bin/serve.js -s dist -l $PORT"
