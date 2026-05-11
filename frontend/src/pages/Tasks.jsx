@@ -14,10 +14,14 @@ export default function Tasks() {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const { data: projs } = await projectAPI.getAll()
+        const { data: raw } = await projectAPI.getAll()
+
+        // Guard: ensure we always work with a clean array
+        const projs = Array.isArray(raw) ? raw.filter(Boolean) : []
         setProjects(projs)
+
         const results = await Promise.all(projs.map(p => taskAPI.getByProject(p._id)))
-        const allTasks = results.flatMap(r => r.data)
+        const allTasks = results.flatMap(r => Array.isArray(r.data) ? r.data : [])
         setTasks(allTasks)
       } catch (e) {
         console.error(e)

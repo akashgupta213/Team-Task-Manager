@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'https://team-task-manager-production-a371.up.railway.app/'
+      '/api': 'http://localhost:5000'
     }
   }
 })

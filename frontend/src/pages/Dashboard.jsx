@@ -31,14 +31,21 @@ export default function Dashboard() {
           projectAPI.getAll(),
         ])
         setStats(statsRes.data)
-        setProjects(projectsRes.data)
+
+        // Guard: ensure we always work with a clean array
+        const safeProjects = Array.isArray(projectsRes.data)
+          ? projectsRes.data.filter(Boolean)
+          : []
+        setProjects(safeProjects)
 
         // fetch tasks from first 2 projects
-        const taskPromises = projectsRes.data.slice(0, 2).map(p =>
+        const taskPromises = safeProjects.slice(0, 2).map(p =>
           taskAPI.getByProject(p._id)
         )
         const taskResults = await Promise.all(taskPromises)
-        const allTasks = taskResults.flatMap(r => r.data).slice(0, 8)
+        const allTasks = taskResults
+          .flatMap(r => Array.isArray(r.data) ? r.data : [])
+          .slice(0, 8)
         setRecentTasks(allTasks)
       } catch (e) {
         console.error(e)

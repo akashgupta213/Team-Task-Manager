@@ -6,8 +6,8 @@ import ProjectMember from "../models/ProjectMember.js";
 export const createProject = async (req, res) => {
   const { name, description } = req.body;
   if (!name || !description) {
-  return res.status(400).json({ message: "Project name and description are required" });
-}
+    return res.status(400).json({ message: "Project name and description are required" });
+  }
   const project = await Project.create({ name, description, createdBy: req.user._id });
 
   // Auto-add creator as ADMIN member
@@ -19,7 +19,7 @@ export const createProject = async (req, res) => {
 // GET /api/projects — list projects the logged-in user is a member of
 export const getProjects = async (req, res) => {
   const memberships = await ProjectMember.find({ userId: req.user._id }).populate("projectId");
-  const projects = memberships.map(m => m.projectId);
+  const projects = memberships.map(m => m.projectId).filter(Boolean); // filter nulls from deleted projects
   res.json(projects);
 };
 
